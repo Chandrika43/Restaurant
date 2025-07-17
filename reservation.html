@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reservation - Delish Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #8b0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label, input {
+      margin-bottom: 15px;
+    }
+
+    input[type="submit"] {
+      width: 150px;
+      padding: 10px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      color: black;
+      transition: background-color 0.5s ease;
+    }
+
+    footer.thankyou {
+      background-color: #28a745; /* Green background */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Make a Reservation</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="reservation.html">Reservation</a>
+    </nav>
+  </header>
+
+  <main>
+    <form onsubmit="showReservationThankYou(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required />
+
+      <label for="guests">Guests:</label>
+      <input type="number" id="guests" name="guests" min="1" required />
+
+      <input type="submit" value="Book Table" />
+    </form>
+  </main>
+
+  <footer id="footer">
+    <p id="footer-msg">&copy; 2025 Delish Restaurant</p>
+  </footer>
+
+  <script>
+    function showReservationThankYou(event) {
+      event.preventDefault();
+
+      const footer = document.getElementById('footer');
+      const msg = document.getElementById('footer-msg');
+
+      msg.textContent = 'Thank you! Your reservation has been received.';
+      footer.classList.add('thankyou');
+
+      event.target.reset(); // Optional: clear form
+    }
+  </script>
+</body>
+</html>
